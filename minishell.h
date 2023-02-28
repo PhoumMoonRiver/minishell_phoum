@@ -6,7 +6,7 @@
 /*   By: njerasea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 17:16:53 by njerasea          #+#    #+#             */
-/*   Updated: 2023/02/23 18:03:17 by njerasea         ###   ########.fr       */
+/*   Updated: 2023/02/27 18:01:46 by njerasea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,6 @@ typedef struct t_bigstruct
 }	t_bst;
 
 /*lexer*/
-void set_env_begin(int ac, char **av, char **env, t_bst *bst);
+void set_env_begin(int ac, char **av, char **env, t_bst *bst); //keep env
 
 #endif
