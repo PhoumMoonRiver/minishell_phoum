@@ -1,38 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: njerasea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/23 17:16:41 by njerasea          #+#    #+#             */
-/*   Updated: 2023/03/04 17:28:27 by njerasea         ###   ########.fr       */
+/*   Created: 2023/03/04 18:47:11 by njerasea          #+#    #+#             */
+/*   Updated: 2023/03/04 19:13:08 by njerasea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../minishell.h"
 
-int	main(int ac, char **av, char **env)
+int	ft_strncmp(char *src, char *des, int num)
 {
-	t_bst bst;
+	int	i;
 
-	if (set_env_begin(ac, av, env, &bst) == 1)
-		return (0);
-	while (1)
+	i = 0;
+	while (i < num)
 	{
-		bst.cmd_prompt = readline("\e[0;32mminishell -> \033[0m");
-		if (!bst.cmd_prompt)
-		{
-			printf("--> EXIT <--\n"); //อย่าลืม free
-			exit(0);
-		}
-		else
-		{
-			if (bst.cmd_prompt[0] == '\0')
-				free(bst.cmd_prompt);
-			else
-				ft_process(&bst);
-		}
+		if (src[i] - des[i] != 0)
+			return (src[i] - des[i]);
+		i++;
 	}
 	return (0);
 }

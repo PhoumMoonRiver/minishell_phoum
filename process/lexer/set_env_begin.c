@@ -6,11 +6,11 @@
 /*   By: njerasea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 17:52:17 by njerasea          #+#    #+#             */
-/*   Updated: 2023/02/28 14:21:19 by njerasea         ###   ########.fr       */
+/*   Updated: 2023/03/04 17:28:56 by njerasea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "../../minishell.h"
 
 int set_env_begin(int ac, char **av, char **env, t_bst *bst)
 {
