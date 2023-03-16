@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   process.c                                          :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: njerasea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/04 17:25:10 by njerasea          #+#    #+#             */
-/*   Updated: 2023/03/16 17:43:30 by njerasea         ###   ########.fr       */
+/*   Created: 2023/03/10 16:14:53 by njerasea          #+#    #+#             */
+/*   Updated: 2023/03/10 16:15:06 by njerasea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-void ft_process(t_bst *bst)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	add_history(bst->cmd_prompt);
-	if (ft_strncmp(bst->cmd_prompt, "exit\0", 6) == 0)
-	{
-		printf("minishell exit");
-		free(bst->cmd_prompt);
-		bulitins_exit(bst);
-		exit(0);
-	}
-	lexer(bst);
+	size_t	i;
+
+	if (!s1 || !set)
+		return (NULL);
+	while (*s1 && ft_strchr(set, *s1))
+		s1++;
+	i = ft_strlen(s1);
+	while (i && ft_strchr(set, s1[i]))
+		i--;
+	return (ft_substr(s1, 0, i + 1));
 }

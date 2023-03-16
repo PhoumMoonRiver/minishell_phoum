@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   process.c                                          :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: njerasea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/04 17:25:10 by njerasea          #+#    #+#             */
-/*   Updated: 2023/03/16 17:43:30 by njerasea         ###   ########.fr       */
+/*   Created: 2023/03/10 16:13:15 by njerasea          #+#    #+#             */
+/*   Updated: 2023/03/10 16:14:19 by njerasea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-void ft_process(t_bst *bst)
+char	*ft_strchr(const char *s, int c)
 {
-	add_history(bst->cmd_prompt);
-	if (ft_strncmp(bst->cmd_prompt, "exit\0", 6) == 0)
-	{
-		printf("minishell exit");
-		free(bst->cmd_prompt);
-		bulitins_exit(bst);
-		exit(0);
-	}
-	lexer(bst);
+	char	focus;
+
+	focus = (char)c;
+	while (*s && focus != *s)
+		s++;
+	if (focus == *s)
+		return ((char *)s);
+	return (NULL);
 }
