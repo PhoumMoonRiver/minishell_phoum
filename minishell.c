@@ -6,7 +6,7 @@
 /*   By: njerasea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 17:16:41 by njerasea          #+#    #+#             */
-/*   Updated: 2023/03/04 17:28:27 by njerasea         ###   ########.fr       */
+/*   Updated: 2023/03/10 15:32:23 by njerasea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ int	main(int ac, char **av, char **env)
 		bst.cmd_prompt = readline("\e[0;32mminishell -> \033[0m");
 		if (!bst.cmd_prompt)
 		{
-			printf("--> EXIT <--\n"); //อย่าลืม free
+			printf("--> EXIT <--\n");
+			bulitins_exit(bst);
 			exit(0);
 		}
 		else
