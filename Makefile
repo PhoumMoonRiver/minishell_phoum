@@ -6,32 +6,26 @@
 #    By: njerasea <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/23 17:14:37 by njerasea          #+#    #+#              #
-#    Updated: 2023/03/17 19:40:17 by njerasea         ###   ########.fr        #
+#    Updated: 2023/03/17 20:28:34 by njerasea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minishell
 
-READLINE_DIR = /usr/local/opt/readline/
-
 SRCS = minishell.c\
 		executor/executor.c
 
-CC = gcc -Wall -Wextra -Werror -g
-
-READLINE_F = -lreadline -I$(READLINE_DIR)include/ -L$(READLINE_DIR)lib/
+CC = gcc -Wall -Wextra -Werror
 
 RM = rm -rf
 
-OBJS = $(SRCS:.c=.o)
-
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	$(CC) -g -o $(NAME) $(OBJS) $(READLINE_F)
+$(NAME):
+	$(CC) $(SRCS) -o $(NAME)
 
 clean:
-	$(RM) $(OBJS)
+	$(RM) $(NAME)
 	$(RM) minishell.dSYM
 
 fclean: clean
