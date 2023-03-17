@@ -6,7 +6,7 @@
 #    By: njerasea <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/23 17:14:37 by njerasea          #+#    #+#              #
-#    Updated: 2023/03/17 17:42:42 by njerasea         ###   ########.fr        #
+#    Updated: 2023/03/17 19:40:17 by njerasea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,9 +14,10 @@ NAME = minishell
 
 READLINE_DIR = /usr/local/opt/readline/
 
-SRCS = minishell.c
+SRCS = minishell.c\
+		executor/executor.c
 
-CC = gcc -Wall -Wextra -Werror
+CC = gcc -Wall -Wextra -Werror -g
 
 READLINE_F = -lreadline -I$(READLINE_DIR)include/ -L$(READLINE_DIR)lib/
 
@@ -27,7 +28,7 @@ OBJS = $(SRCS:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) -o $(NAME) $(OBJS) $(READLINE_F)
+	$(CC) -g -o $(NAME) $(OBJS) $(READLINE_F)
 
 clean:
 	$(RM) $(OBJS)
