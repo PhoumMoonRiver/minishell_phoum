@@ -6,7 +6,7 @@
 /*   By: njerasea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 19:35:08 by njerasea          #+#    #+#             */
-/*   Updated: 2023/03/17 20:10:19 by njerasea         ###   ########.fr       */
+/*   Updated: 2023/03/19 16:08:47 by njerasea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,12 @@ typedef struct s_process_expander
 
 typedef struct s_process_executor
 {
-	pid_t							pid;
-	char 							**cmd;
-	char 							*execute_path;
 	int								fd_pipe[2];
 	int								fd_in;
 	int								fd_out;
+	pid_t							pid;
+	char 							**cmd;
+	char 							*execute_path;
 	struct s_bigstruct 				*big_struct;
 	struct s_process_expander 		*expander;
 	struct s_process_executor 		*next;
@@ -43,8 +43,31 @@ typedef struct s_process_executor
 typedef struct s_bigstruct
 {
 	int								round_pipe;
+	char							**my_env;
 	t_expander						*expander;
 	t_executor						*executor;
 }	t_bst;
+
+/* ==> EXECUTOR <== */
+char	*join_and_check_path(t_bst *bst, char **path_split);
+void	executor(t_bst *bst);
+void	split_path_form_env(t_bst *bst);
+
+/* ==> LIBFT <== */
+int	ft_strncmp(char *s1, char *s2, int n);
+int	ft_strlen(char *str);
+char	**ft_split(char *str, char del);
+char	*ft_strjoin(char *s1, char *s2);
+char	*ft_strdup(char *s1);
+void	ft_free2d(char **str);
+
+/* ==> debug <== */
+void	print_d_str(char **str);
+void	print_str(char *str);
+void	print_single_str(char *str);
+
+/* ==> initialism <== */
+void	initialism_big_struct(t_bst *bst);
+void	initialism_executor(t_bst *bst);
 
 #endif
