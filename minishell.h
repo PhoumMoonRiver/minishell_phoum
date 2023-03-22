@@ -6,7 +6,7 @@
 /*   By: njerasea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 19:35:08 by njerasea          #+#    #+#             */
-/*   Updated: 2023/03/19 16:08:47 by njerasea         ###   ########.fr       */
+/*   Updated: 2023/03/20 18:15:18 by njerasea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef struct s_process_executor
 	int								fd_pipe[2];
 	int								fd_in;
 	int								fd_out;
+	int								execute_sign;
 	pid_t							pid;
 	char 							**cmd;
 	char 							*execute_path;
@@ -49,7 +50,7 @@ typedef struct s_bigstruct
 }	t_bst;
 
 /* ==> EXECUTOR <== */
-char	*join_and_check_path(t_bst *bst, char **path_split);
+void	join_and_check_path(t_bst *bst, char **path_split, char *cmd);
 void	executor(t_bst *bst);
 void	split_path_form_env(t_bst *bst);
 
@@ -65,6 +66,7 @@ void	ft_free2d(char **str);
 void	print_d_str(char **str);
 void	print_str(char *str);
 void	print_single_str(char *str);
+void	print_list(t_bst *bst);
 
 /* ==> initialism <== */
 void	initialism_big_struct(t_bst *bst);
